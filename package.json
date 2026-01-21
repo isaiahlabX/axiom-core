@@ -1,6 +1,6 @@
 {
   "name": "@axiom-infra/core",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Local semantic boundary engine for private AI reasoning",
   "author": "Axiom Core Team <hello@axiominfra.cloud>",
   "repository": {
@@ -14,9 +14,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "build:enclave": "cd enclave/runner && cargo build --release",
-    "test": "node --test --experimental-strip-types tests/boundary.test.ts tests/canonical.test.ts tests/attestation.test.ts tests/attested.integration.test.ts",
+    "build": "node init && tsc",
+    "build:enclave": "node init && cd enclave/runner && cargo build --release",
     "test": "node --test --experimental-strip-types tests/boundary.test.ts tests/canonical.test.ts tests/attestation.test.ts",
     "test:boundary": "node --test --experimental-strip-types tests/boundary.test.ts",
     "test:canonical": "node --test --experimental-strip-types tests/canonical.test.ts",
@@ -35,9 +34,11 @@
     "sdk",
     "open-core"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
   "optionalDependencies": {
-    "@axiom-infra/enclave-runner": "0.1.0"
+    "@axiom-infra/enclave-runner": "1.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.0"
